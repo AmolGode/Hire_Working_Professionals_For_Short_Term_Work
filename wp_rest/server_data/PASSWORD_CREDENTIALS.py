@@ -1,7 +1,7 @@
-RAZORPAY_ID = 'rzp_test_8Vn7KU5OlIF446'
+RAZORPAY_ID = ''
 
-RAZORPAY_SECRET_ID = 'hNbRRoplqd8R8gCjiOeqUwlk'
+RAZORPAY_SECRET_ID = ''
 
 
-SERVER_EMAIL_ID = '17amolgode@gmail.com'
-SERVER_EMAIL_ID_PASSWORD = 'zguiskpqfogxrtmj'
+SERVER_EMAIL_ID = '@gmail.com'
+SERVER_EMAIL_ID_PASSWORD = ''
