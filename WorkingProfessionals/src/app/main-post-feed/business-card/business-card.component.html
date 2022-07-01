@@ -1,0 +1,19 @@
+    <mat-card class="example-card">
+        <mat-card-header>
+          <img mat-card-avatar class="example-header-image" [src]="profile_pic_url">
+          <mat-card-title>{{BusinessCardObj.first_name}} {{BusinessCardObj.last_name}}</mat-card-title>
+          <mat-card-subtitle>{{BusinessCardObj.business_title}}</mat-card-subtitle>
+        </mat-card-header>
+        <p class="status-text">{{BusinessCardObj.status}}</p>
+        <img mat-card-image [src]="work_sample_image_url" alt="Work sample image." class="business-card-image">
+        <mat-card-content>
+          <p class="work-sample-description">
+            {{BusinessCardObj.business_description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <span class="rating"><mat-icon>star</mat-icon> {{wp_rating}}/10 &nbsp; 
+          ({{BusinessCardObj.feedback_count}}) User Reviews</span>
+          <button mat-raised-button  class="view-profile" color="primary" routerLink="business-card-full-view/{{BusinessCardObj.business_account_id}}">View Profile</button> 
+        </mat-card-actions>
+      </mat-card>

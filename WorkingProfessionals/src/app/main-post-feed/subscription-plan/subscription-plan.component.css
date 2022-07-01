@@ -1,0 +1,47 @@
+.example-card {
+    /* max-width: 400px; */
+    margin-top: 10px;
+    border: 1px solid black;
+    border-bottom: 15px solid rgba(0, 0, 139, 0.322);
+  }
+
+  .center
+  {
+      text-align: center;
+  }
+
+  .heading
+  {
+      padding-top: 4%;
+      padding-bottom: 4%;
+      border-bottom: 1px solid black;
+      /* border-bottom-width: 10px; */
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: x-large;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .get-started-btn
+  {
+      font-size: 25px;
+      padding: 10px 20px 10px 20px;
+      background-color: rgb(1, 7, 61);
+      color: aliceblue;
+      border-width: 0.5px;
+  }
+
+.hover-button:hover
+  {
+    background-color: white;
+    color: black;
+  }
+
+  .features-text
+  {
+      font-size: medium;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-decoration: none;
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }

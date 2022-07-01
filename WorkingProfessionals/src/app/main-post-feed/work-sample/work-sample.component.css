@@ -1,0 +1,25 @@
+/* buisness card */
+.example-card {
+    max-width: 400px;
+    height: 500px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+/* buisness card end */
+
+.business-card-image
+{
+  height: 400px;
+}
+
+.work-sample-description
+{
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  float:left;
+  width:100%;
+  overflow-y: auto;
+  height: 70px;
+}

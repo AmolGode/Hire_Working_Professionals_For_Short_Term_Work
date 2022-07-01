@@ -1,0 +1,11 @@
+<mat-card>
+    <div *ngFor="let cl of contactList">
+        <button mat-button class="contact-button" (click)="open_chat_box(cl.in_contact_with_id)">
+            <mat-card-header mat-button class="bottom-space">
+                <img mat-card-avatar [src]="api_url+cl.profile_pic" class="example-header-image">
+                <mat-card-title class="name">{{cl.first_name}} {{cl.last_name}} <span class="notification_count">{{cl.new_msg_count}}</span></mat-card-title>
+                <mat-card-subtitle>{{cl.business_title}} | {{cl.email_id}} | {{cl.contact_number}}</mat-card-subtitle>
+            </mat-card-header>
+        </button>
+    </div>
+</mat-card>

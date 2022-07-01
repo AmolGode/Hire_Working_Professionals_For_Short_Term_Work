@@ -1,0 +1,25 @@
+
+<mat-card class="example-card">
+    <img mat-card-image [src]="work_sample_image_url"alt="Work sample" class="work-sample-image">
+    <form [formGroup]="workSampleEditForm" (ngSubmit)="edit_wp_work_sample(workSampleEditForm.value)">
+        <mat-card-content>
+          <mat-form-field appearance="fill" class="full-width">
+              <textarea matInput rows="7" formControlName="work_sample_description"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" mat-button *ngIf="workSampleEditForm.disabled" (click)="workSampleEditForm.enable()">Edit description</button>
+          <button type="submit" mat-button *ngIf="workSampleEditForm.enabled">Save edited description</button>
+          <button type="button" mat-button (click)="delete_wp_work_sample()">Delete</button>
+          <br>
+          <button type="button" mat-raised-button color="primary" (click)="toggle_business_card_image()" class="right-attached" 
+          *ngIf="WorkSampleObj.is_business_card_image">
+            unselect as business card image
+          </button>
+
+          <button type="button" mat-raised-button (click)="toggle_business_card_image()" class="right-attached"
+          *ngIf="!WorkSampleObj.is_business_card_image">select as business card image</button>
+
+        </mat-card-actions>
+   </form>
+  </mat-card>

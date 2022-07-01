@@ -1,0 +1,116 @@
+.heading
+{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-top: 3px;
+    margin-bottom: 3x;
+}
+
+.full-width
+{
+    width: 100%;
+}
+
+/* material ui table */
+.demo-table {
+    width: 100%;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }
+  /* material ui table  end*/
+
+  .delete-wp-account-div
+  {
+    background-color: rgb(243, 20, 20, 0.3);
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+  .warning-text
+  {
+    color: red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+  }
+
+  .delete-btn
+  {
+    margin-right: 10px;
+  }
+
+  .heading-box
+  {
+    background-color: darkblue;
+    width: 100%;
+  }
+
+
+
+  table {
+    width: 100%;
+  }
+
+
+  /* Free Trial Start */
+  .example-card {
+    /* max-width: 400px; */
+    margin-top: 10px;
+    border: 1px solid black;
+    border-bottom: 15px solid rgba(0, 0, 139, 0.185);
+  }
+
+  .center
+  {
+      text-align: center;
+  }
+
+  .free-trial-heading
+  {
+      padding-top: 4%;
+      padding-bottom: 4%;
+      border-bottom: 1px solid black;
+      /* border-bottom-width: 10px; */
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: x-large;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .get-started-btn
+  {
+      font-size: 25px;
+      padding: 10px 20px 10px 20px;
+      background-color: rgb(20, 35, 170);
+      color: aliceblue;
+      border-width: 0.5px;
+  }
+
+.hover-button:hover
+  {
+    background-color: white;
+    color: black;
+  }
+
+  .features-text
+  {
+      font-size: medium;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-decoration: none;
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }
+  /* Free Trial End */
+
+  .subscription-days-btn
+  {
+    position: absolute;
+    right: 2px;
+    margin-top: -20px;
+  }

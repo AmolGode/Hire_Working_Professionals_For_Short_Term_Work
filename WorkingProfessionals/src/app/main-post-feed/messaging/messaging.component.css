@@ -1,0 +1,82 @@
+.example-card {
+    max-width: 550px;
+    /* min-height: 90vh; */
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+
+.message-container
+{
+  border: 1px solid black;
+  height: 70vh;
+  padding-bottom: 10px;;
+}
+
+.message-box
+{
+  padding: 7px;
+  margin-top: 10px;
+  background-color: #e2e2e2c9;
+  line-height: 20px;
+  margin-left: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: larger;
+  width: 78%;
+  padding: 15px;
+  border-bottom: 4px solid rgb(19, 58, 97);
+}
+
+.others-msg
+{
+  margin-left: 110px;
+  background-color: #e2e2e2e2;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: larger;
+  padding: 15px;
+  border-bottom: 4px solid rgb(1, 70, 1);
+  width: auto;
+}
+
+mat-card-content
+{
+  overflow-y: auto;
+  height: 80%;
+}
+
+.msg-text-area
+{
+  width: 76%;
+  margin-bottom: -18px !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: larger;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 745px) {
+  .msg-text-area
+  {
+    width: 65%;
+  }
+}
+
+.send-button
+{
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10%;
+  background-color: rgb(19, 58, 97);
+  color: #FFFFFF;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.msg-time
+{
+  position: relative;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  float: right;
+  bottom: 10px;
+}

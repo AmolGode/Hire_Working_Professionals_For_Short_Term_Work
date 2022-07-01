@@ -1,0 +1,89 @@
+.form-container
+{
+    display: block;
+    max-width: 700px;
+    margin: auto;
+    background: #eceff1;
+    /* background-color: #00d1b80d; */
+    padding: 48px;
+    border-radius: 16px;
+}
+
+.form-container mat-form-field
+{
+    width: 100%;
+}
+
+.full-width
+{
+    width: 100%;
+}
+
+.center
+{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-top
+{
+    margin-top: 16px;
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.sign-up-link
+{
+    font-size: 1.2rem;
+    margin-left: 8px;
+}
+.mat-radio-button
+{
+    padding-right: 30px;
+}
+
+.avatar 
+{
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    /* width: 50%; */
+}
+
+.hidden
+{
+    display: none;
+}
+
+.header
+{
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 20px;
+    background-color: #00d1b875;
+    text-shadow: red;
+    margin-bottom: 20px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.warning-message
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: red;
+}
+.success-message
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: green;
+}

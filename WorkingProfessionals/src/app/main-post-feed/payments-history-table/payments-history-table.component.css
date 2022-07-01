@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+  }
+
+
+.payment-table
+{
+  /* width: 100em; */
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.heading
+{
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: xx-large;
+  border-bottom: 3px gray solid;
+  padding-bottom: 5px;
+}

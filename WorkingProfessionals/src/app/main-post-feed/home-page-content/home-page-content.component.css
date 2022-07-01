@@ -1,0 +1,13 @@
+.background-img
+{
+    /* opacity: 0.1; */
+    margin-top: -100px;
+    width: 100%;
+}
+
+/* On screens that are 1400 wide or less, go from four columns to two columns */
+@media screen and (max-width: 1400px) {
+    .background-img {
+      margin-top: 20vh;
+    }
+  }

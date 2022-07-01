@@ -1,0 +1,13 @@
+<mat-card class="feedback-card">
+    <mat-card-header mat-button class="bottom-space">
+            <img mat-card-avatar [src]="profile_pic_url" class="example-header-image">
+            <mat-card-title>{{feedbackObj.feedback_by_user_first_name}} {{feedbackObj.feedback_by_user_last_name}}</mat-card-title>
+            <mat-card-subtitle>{{feedbackObj.date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        {{feedbackObj.feedback_text}}
+        <br>
+        <ngb-rating [rate]="feedbackObj.rating"></ngb-rating>
+    </mat-card-content>
+
+</mat-card>

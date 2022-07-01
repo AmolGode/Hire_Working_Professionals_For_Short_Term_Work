@@ -1,0 +1,56 @@
+<div class="container-fluid top-down-space">
+ <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <mat-card class="wp-info-card">
+            <mat-card-content>
+                <img class="example-header-image" [src]="profile_pic_url">
+            </mat-card-content>
+            <mat-card-header>
+                <mat-card-title>{{wpBusinessAccountInfo.first_name}} {{wpBusinessAccountInfo.last_name}} <mat-icon mat-raised-button color="primary" (click)="add_to_contact_list_and_goto_messaging()"> message</mat-icon></mat-card-title>
+                <mat-card-subtitle>{{wpBusinessAccountInfo.business_title}} | {{wpBusinessAccountInfo.contact_number}} | {{wpBusinessAccountInfo.email_id}}</mat-card-subtitle>
+            </mat-card-header>
+            <p class="test-box">Status : {{wpBusinessAccountInfo.status}}</p>
+            <p class="test-box">{{wpBusinessAccountInfo.business_description}}</p>
+            <p class="test-box">Note : {{wpBusinessAccountInfo.note}}</p>
+            <mat-card-actions>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="feedback-section">
+            <h1 class="heading">Feedback Section</h1>
+            <span class="rating"><mat-icon>star</mat-icon> {{wp_rating}} /10 &nbsp; 
+                ({{wpFeedbacks.length}}) User Reviews
+            </span>
+            <span *ngFor="let feedback of wpFeedbacks">
+                <app-feedback [feedbackObj]="feedback"></app-feedback>
+            </span>
+        </div>
+    </div>
+ </div>
+ 
+ <mat-divider class="top-down-space"></mat-divider>
+
+ <mat-card>
+    <mat-card-actions>
+        <h1>Feedback</h1>
+        <textarea mat-input rows="3" class="full-width" [formControl]="feedbackTextAreaControl"></textarea>
+        <ngb-rating [(rate)]="users_wp_rating"></ngb-rating>
+        <button mat-button (click)="add_feedback_for_wp()">Add Feddback</button>
+      </mat-card-actions>
+</mat-card>
+
+    <mat-divider class="top-down-space"></mat-divider>
+    <h1 class="heading">Work Samples</h1>
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 20px;" *ngFor="let work_sample of wpWorkSamples">
+            <app-work-sample [WorkSample]="work_sample"></app-work-sample>
+        </div>
+    </div>
+    <mat-divider class="top-down-space"></mat-divider>
+
+
+    <mat-divider class="top-down-space"></mat-divider>
+    
+</div>

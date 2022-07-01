@@ -1,0 +1,42 @@
+/* Angular Material UI Css */
+.example-chip-list {
+    width: 100%;
+  }
+/*  */
+/* .example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+} */
+
+.example-full-width {
+  width: 100%;
+}
+
+.divider
+{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.search-btn
+{
+  padding: 4px 10px 4px 10px;
+  font-size: 20px;
+  color: white;
+  font-weight: 100;
+}
+
+.clear-btn
+{
+  padding: 4px 10px 4px 10px;
+  font-size: 20px;
+  font-weight: 100;
+  margin-left: 10px;
+}
+
+.search-panel
+{
+  margin-top: 5px;
+  padding: 6px;
+}

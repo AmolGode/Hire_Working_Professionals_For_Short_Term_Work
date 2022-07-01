@@ -1,0 +1,48 @@
+/* buisness card */
+.example-card {
+    max-width: 400px;
+    height: 650px;
+  }
+  
+  .example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+  }
+/* buisness card end */
+
+.business-card-image
+{
+  height: 380px;
+}
+
+
+.work-sample-description
+{
+  font-size: larger;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  float:left;
+  width:100%;
+  overflow-y: auto;
+  height: 70px;
+}
+
+.status-text
+{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-bottom: 2px solid gray;
+  font-size: larger;
+  padding-left: 3px;
+}
+
+.rating
+{
+  font-size: medium;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 1px;
+  padding-left: 10px;
+}
+
+.view-profile
+{
+  font-variant-caps: petite-caps;
+}

@@ -1,0 +1,235 @@
+<div class="container-fluid">
+    <h1 class="heading">Business Profile </h1> <button mat-raised-button color="primary" class="subscription-days-btn">{{subscriptionValidity}}</button>
+
+    <!-- <p>To create business account fill all the information.</p> -->
+
+    <!-- Stepper start -->
+
+    <mat-stepper #stepper>
+        <mat-step [stepControl]="basicBusiDetailsForm" [editable]="isEditable">
+          <h1>Basic business details</h1> 
+          <h4>Verification Status = {{basicBusinessDetails.verification_status}} &nbsp;&nbsp; <button mat-raised-button color="warn" (click)="reapplay_for_verification()" *ngIf="have_busi_acc && basicBusinessDetails.verification_status =='Not Selected'">Reapplay</button></h4>
+          <hr>
+          <form [formGroup]="basicBusiDetailsForm" (ngSubmit)="create_wp_business_account(basicBusiDetailsForm.value)">
+            <ng-template matStepLabel>Basic Details</ng-template>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Business Title</mat-label>
+              <input matInput formControlName="business_title" [(ngModel)]="basicBusinessDetails.business_title" placeholder="Enter business title">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="business_description" [(ngModel)]="basicBusinessDetails.business_description" placeholder="Enter description about your business."></textarea>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Note</mat-label>
+                <input matInput formControlName="note" [(ngModel)]="basicBusinessDetails.note" placeholder="Enter note for your customer">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="status" [(ngModel)]="basicBusinessDetails.status" placeholder="eg. : Open for work">
+              </mat-form-field>
+            <!-- <div> -->
+                <button type="submit" mat-button *ngIf="!have_busi_acc">Save</button>
+                <button type="button" mat-button (click)="make_editable_wp_basic_business_details()" *ngIf="have_busi_acc">Edit</button>
+                <button type="button" mat-button (click)="update_wp_business_account()" *ngIf="basicBusiDetailsForm.enabled && !update_wp_business_account_loading && have_busi_acc">Save Changes</button>
+                <button class="btn btn-primary"  disabled *ngIf="update_wp_business_account_loading">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Saving changes...
+              </button>
+              <button type="button" mat-button matStepperNext>Next</button>
+            </form>
+              
+            <!-- </div> -->
+          
+        </mat-step>
+        <mat-step *ngIf="have_busi_acc" [stepControl]="AddProffessionTagForm" [editable]="isEditable">
+          <form [formGroup]="AddProffessionTagForm" (ngSubmit)="add_wp_profession_tag(AddProffessionTagForm.value)">
+            <ng-template matStepLabel>Tags</ng-template>
+            <p>Tags are descriptive keywords about your profession that help people to find your profile.</p>
+            <mat-form-field appearance="fill">
+              <mat-label>Add Tag</mat-label>
+              <input matInput formControlName="tag_name" placeholder="Enter tag name here">
+            </mat-form-field>
+            <div>
+              <button type="submit" mat-button>Add Tag</button>
+              <button mat-button type="button" matStepperPrevious>Back</button>
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </form>
+
+          <!-- Tag table -->
+
+          <table mat-table #tagsTable [dataSource]="tagsDataSource" class="mat-elevation-z8 demo-table">
+            <!-- Sr No Column -->
+            <ng-container matColumnDef="Sr. No.">
+              <th mat-header-cell *matHeaderCellDef>Sr No.</th>
+              <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+            </ng-container>
+          
+            <!-- Tag Name Column -->
+            <ng-container matColumnDef="tag_name">
+              <th mat-header-cell *matHeaderCellDef>Tag Name</th>
+              <td mat-cell *matCellDef="let element">{{element.tag_name}}</td>
+            </ng-container>
+          
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element"><button mat-button (click)="delete_wp_profession_tag(element.id,element.tag_name)">Delete</button></td>
+            </ng-container>
+          
+            
+          
+            <tr mat-header-row *matHeaderRowDef="tagDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: tagDisplayedColumns;"></tr>
+          </table>
+          <!-- Tag table end -->
+
+        </mat-step>
+        <mat-step *ngIf="have_busi_acc" [stepControl]="AddServiceAreaForm" [editable]="isEditable">
+            <form [formGroup]="AddServiceAreaForm" (ngSubmit)="add_wp_service_area(AddServiceAreaForm.value)">
+              <ng-template matStepLabel>Service Area</ng-template>
+              <p>You can add the city's name list where you serve your services.</p>
+              <mat-form-field appearance="fill">
+                <mat-label>Add City</mat-label>
+                <input matInput formControlName="city_name" placeholder="Add city here">
+              </mat-form-field>
+              <!-- <div> -->
+                <button type="submit" mat-button>Add City</button>
+              </form>
+                <button mat-button type="button" matStepperPrevious>Back</button>
+                <button mat-button type="button" matStepperNext>Next</button>
+              <!-- </div> -->
+            
+
+            <!-- Service Area table -->
+
+          <table mat-table #serviceAreaTable [dataSource]="serviceAreaDataSource" class="mat-elevation-z8 demo-table">
+            <!-- Sr No Column -->
+            <ng-container matColumnDef="Sr. No.">
+              <th mat-header-cell *matHeaderCellDef>Sr No.</th>
+              <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+            </ng-container>
+          
+            <!-- City Name Column -->
+            <ng-container matColumnDef="city_name">
+              <th mat-header-cell *matHeaderCellDef>City Name</th>
+              <td mat-cell *matCellDef="let element">{{element.city_name}}</td>
+            </ng-container>
+          
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element"><button mat-button (click)="delete_wp_service_area(element.id,element.city_name)">Delete</button></td>
+            </ng-container>
+          
+            
+          
+            <tr mat-header-row *matHeaderRowDef="serviceAreaDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: serviceAreaDisplayedColumns;"></tr>
+          </table>
+          <!-- Service Area  end -->
+
+
+          </mat-step>
+
+          <!-- Work Sample start -->
+          <mat-step *ngIf="have_busi_acc" [stepControl]="AddWorkSampleForm" [editable]="isEditable">
+            <form [formGroup]="AddWorkSampleForm" (ngSubmit)="add_wp_work_sample(AddWorkSampleForm.value)">
+              <ng-template matStepLabel>Work Samples</ng-template>
+              <input type="file" formControlName="work_sample_image" (change)="onFileSelectProfilePic($event)">
+              <br><br>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Enter some description about our your work sample</mat-label>
+                <textarea matInput placeholder="" formControlName="work_sample_description" rows="10"></textarea>
+              </mat-form-field>
+              <div>
+                <button mat-button type="submit" *ngIf="!add_work_sample_loading">Add Work Sample</button>
+                <button class="btn btn-primary" type="button" disabled *ngIf="add_work_sample_loading">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Adding....
+              </button>
+                <button mat-button type="button" type="button" matStepperPrevious>Back</button>
+                <button mat-button type="button" type="button" matStepperNext>Next</button>
+              </div>
+            </form>
+            <mat-divider></mat-divider>
+            
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngFor="let work_sample_obj of work_samples">
+                    <app-edit-work-sample [WorkSampleObj]="work_sample_obj"></app-edit-work-sample>
+                  </div>
+                </div>
+          </mat-step>
+          <!-- Work Sample end -->
+
+        <!-- Payments start -->
+        <mat-step *ngIf="have_busi_acc">
+          <ng-template matStepLabel>Payments</ng-template>
+            <app-payments-history-table></app-payments-history-table>
+          <div>
+            <button mat-button type="button" matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+        <!-- Payments end -->
+
+        <!-- Subscription plans start -->
+        <mat-step *ngIf="have_busi_acc">
+          <ng-template matStepLabel>Subscription plans</ng-template>
+          
+          <h1 class="center heading">Subscription Plans</h1>
+          
+          <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4" *ngIf="basicBusinessDetails.free_trial_used == false">
+              <mat-card class="example-card">
+                <mat-card-title class="center free-trial-heading">30 Days Free Trail</mat-card-title>
+                <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                <mat-card-content>
+                  <h1 class="center">RS 0 / 30 DAYS</h1>
+            
+                  <h1 class="center">
+                    <button class="get-started-btn hover-button" (click)="activate_free_trial()">GET STARTED</button>
+                  </h1>
+                  <ul class="features-text">
+                      <li>24/7 Doubt Support Available.</li>
+                      <!-- <li>Email Notifications</li> -->
+                  </ul>
+                  
+                </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4" *ngFor="let sub_plan of subscriptionPlans">
+              <app-subscription-plan [subscriptionPlanObj]="sub_plan"></app-subscription-plan>
+            </div>
+          </div>
+          <div>
+            <button mat-button type="button" matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+        <!-- Subscription plans end -->
+
+        <!-- Delete stepper start-->
+        <mat-step *ngIf="have_busi_acc">
+          <ng-template matStepLabel>Delete Business Account</ng-template>
+          <p>Delete working profesional business account.</p>
+          <div>
+            
+            <a (click)="toggle_delete_wp_business_sccount_btn()" class="warning-text">Delete this business account..!</a>
+            <div class="delete-wp-account-div" *ngIf="delete_btn_enable">
+              <p class="warning-text">yes I am sure, I want to delete my business account..!</p>
+              <button (click)="delete_wp_business_account()" (click)="stepper.reset()"  mat-raised-button color="warn" class="delete-btn">Delete this business account</button>
+              <button (click)="toggle_delete_wp_business_sccount_btn()" mat-raised-button color="primary">No..!</button>
+            </div>
+
+            <button mat-button type="button" matStepperPrevious>Back</button>
+            
+            <!-- stepper.reset() -->
+          </div>
+        </mat-step>
+        <!-- Delete stepper end-->
+      </mat-stepper>
+      
+    <!-- Stepper end -->
+</div>

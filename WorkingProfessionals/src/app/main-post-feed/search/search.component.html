@@ -1,0 +1,66 @@
+<div class="container-fluid">
+<div class="search-panel">
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Select City Your Nearest City</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Select City Your Nearest City"
+             matInput
+             [formControl]="myCityControl"
+             [matAutocomplete]="autoCities"
+             [(ngModel)]="selectedCity">
+      <mat-autocomplete autoActiveFirstOption #autoCities="matAutocomplete">
+        <mat-option *ngFor="let city of filteredCityOptions | async" [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Select Tag</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let tag of selected_tags"
+        (removed)="remove(tag)">
+        {{tag}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New tag..."
+        #fruitInput
+        [formControl]="tagCtrl"
+        [matAutocomplete]="autoTags"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #autoTags="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+        {{tag}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  
+
+  <button mat-raised-button color="accent" class="search-btn" (click)="search_working_professionals()">Search &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon>search</mat-icon></button>
+  <button mat-raised-button class="clear-btn" (click)="clear_business_cards()"> Clear <i class="fa fa-search-minus" aria-hidden="true"></i></button>
+  <mat-divider class="divider"></mat-divider>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 20px;" *ngFor="let bCard of BusinessCards">
+      <app-business-card [BusinessCardObj]="bCard"></app-business-card>
+    </div>
+    <app-home-page-content *ngIf="BusinessCards.length == 0"></app-home-page-content>
+</div>
+
+
+  
+</div>

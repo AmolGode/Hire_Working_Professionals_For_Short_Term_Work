@@ -1,0 +1,40 @@
+.example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+  }
+
+
+
+.contact-button
+{
+  width: 100%;
+  padding: 5px;
+  border-top: 1px solid black;
+  border-bottom: 5px darkblue;
+  border-left: 10px solid green;
+  margin-top: 3px;
+}
+
+.contact-button:hover
+{
+  border-left: 10px solid darkblue;
+}
+.name
+{
+  text-align: left;
+}
+
+.notification_count
+{
+  background-color: green;
+  color: white;
+  padding: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 50px;
+  position: absolute;
+  right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

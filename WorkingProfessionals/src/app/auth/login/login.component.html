@@ -1,0 +1,88 @@
+
+
+<div class="form-container mat-elevation-z5">
+    <h1 class="text-center header">Login</h1>
+    <form [formGroup]="signinForm" (ngSubmit)="login(signinForm.value)">
+        <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [(ngModel)]="user_email_id" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.invalid">Password is to short.</mat-error>
+          </mat-form-field>
+          <a class="forgot-password-link" routerLink="/forgot-password">Forgot Password?</a>
+
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit"[disabled]="!signinForm.valid" *ngIf="!login_btn_loding">
+                Login
+            </button> 
+            <button class="btn btn-primary" type="button" disabled *ngIf="login_btn_loding">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+        </div>
+        <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/signup">Sign Up!</a></span>
+        
+    </form>
+
+<!-- bootstrap model -->
+
+    <ng-template #varify_email_id_warn_model let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Your account is created suceesfully...!</h2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Now you can login with your email id and password.Your account is ready to use..!</h3>
+        <br>
+        <p style="color:brown">The verification email is sent to {{user_email_id}}.Verify email id to receive an important update on your email.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ok</button>
+      </div>
+    </ng-template>
+    <a class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="open(varify_email_id_warn_model)">Launch demo modal</a>
+
+
+    <ng-template #varify_email_id_success_model let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Email Verified Successfully</h2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body" style="color: green;">
+        {{user_email_id}} verified successfully...!
+        <br><br>
+        <p>Now all important updates related to your account will be sent on this email id.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+      </div>
+    </ng-template>
+    
+    <a class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="open(varify_email_id_success_model)">Launch demo modal</a>
+
+    <ng-template #password_updated_model let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Password is updated successfully..!</h2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body" style="color: green;">
+        Now you can login with your new password..!
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+      </div>
+    </ng-template>
+    
+    <a class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="open(password_updated_model)">Launch demo modal</a>
+</div>
+
+

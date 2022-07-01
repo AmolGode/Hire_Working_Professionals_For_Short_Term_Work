@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <img mat-card-avatar [src]="msg_to_user_profile_pic_url" class="example-header-image">
+    <mat-card-title>{{msgToUserObj.first_name}} {{msgToUserObj.last_name}}</mat-card-title>
+    <mat-card-subtitle>{{msgToUserObj.business_title}} | {{msgToUserObj.email_id}} | {{msgToUserObj.contact_number}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div *ngFor="let msg of message_arr" class="message-box" [ngClass]="{'others-msg': msg.msg_from == msg_to_id}">
+        <p>{{msg.message}}</p>
+        <p class="msg-time">{{msg.date}} | {{msg.time.substring(0,5)}}</p>
+      </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <textarea mat-input placeholder="Enter message here.." class="msg-text-area" [formControl]="messageFormControl" matInputAutofocus></textarea>
+    <button class="send-button" mat-raised-button (click)="send_message()">SEND <mat-icon>send</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

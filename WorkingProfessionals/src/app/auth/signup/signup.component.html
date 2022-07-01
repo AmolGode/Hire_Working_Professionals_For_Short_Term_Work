@@ -1,0 +1,75 @@
+<div class="form-container mat-elevation-z5">
+    <h1 class="text-center header">Sign Up</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="save_user(signupForm.value)">
+
+        <input type="file" (change)="onFileSelectProfilePic($event)" class="hidden" #profile_pic_input>
+        <img class="avatar mat-elevation-z8" [src]="profile_pic_url" alt="" (click)="profile_pic_input.click()"> 
+
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" [formControl]="first_name" required>
+            <mat-error *ngIf="first_name.invalid">Invalid input.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" [formControl]="last_name" required>
+            <mat-error *ngIf="last_name.invalid">Invalid input.</mat-error>
+        </mat-form-field>
+
+        
+        <mat-radio-group aria-label="Select an option" [formControl]="gender" required>
+            <!-- <mat-label>Gender</mat-label><br> -->
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Other">Other</mat-radio-button>
+          </mat-radio-group>
+
+        <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email_id" required>
+            <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contact Number</mat-label>
+            <span matPrefix>+91 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234"  [formControl]="contact_number" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="contact_number.invalid">Phone number should contain 10 digit.</mat-error>
+          </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="password1" [(ngModel)]="pass1">
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password1.invalid">Password must be contain atleast 8 character.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Confirm your password</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="password2" [(ngModel)]="pass2">
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password2.invalid">Password must be contain atleast 8 character.</mat-error>
+        </mat-form-field>
+
+        <span *ngIf="password2.valid && pass1 != pass2" class="warning-message">New password and confirm password did not match.</span>
+        <span *ngIf="password2.valid && pass1 == pass2" class="success-message">Now you can create account...!</span>
+
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit"[disabled]="!signupForm.valid || pass1 != pass2" *ngIf="!signup_btn_loding">
+                Sign up
+            </button> 
+            <button class="btn btn-primary" type="button" disabled *ngIf="signup_btn_loding">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+            </button>
+        </div>
+        
+        <span class="center margin-top">Already have account? <a class="sign-up-link" routerLink="/login">Login!</a></span>
+    </form>
+
+</div>

@@ -1,0 +1,53 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 240px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-right-icon
+{
+  position: absolute;
+  right: 20px;
+}
+
+.fa-icons
+{
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 22px;
+}
+
+.top-toolbar
+{
+  /* background-color: darkcyan; */
+  background-color: rgb(19, 58, 97);
+  font-size: 40px;
+  color: #FFFFFF;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-img
+{
+  height: 200px;
+  padding-left: 10px;
+}
+
+/* On screens that are 855 wide or less, go from four columns to two columns */
+@media screen and (max-width: 855px) {
+  .logo-img {
+    padding-left: 0px;
+    height: 100px;
+  }
+}

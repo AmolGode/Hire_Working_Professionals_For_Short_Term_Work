@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+    <mat-card-title class="center heading">{{subscriptionPlanObj.title}}</mat-card-title>
+    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    <mat-card-content>
+      <h1 class="center">RS {{subscriptionPlanObj.price}} / {{subscriptionPlanObj.duration}} DAYS</h1>
+
+      <h1 class="center">
+        <button class="get-started-btn hover-button" (click)="create_order(subscriptionPlanObj.price,subscriptionPlanObj.title)">GET STARTED</button>
+      </h1>
+      <ul class="features-text">
+          <li>24/7 Doubt Support Available.</li>
+          <!-- <li>Email Notifications</li> -->
+      </ul>
+      
+    </mat-card-content>
+  </mat-card>

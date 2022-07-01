@@ -1,0 +1,133 @@
+<div class="container">
+    <h1 class="text-center header">Basic Profile Information</h1>
+
+    <input type="file" (change)="onFileSelectProfilePic($event)" class="hidden" #profile_pic_input required>
+        <img class="avatar mat-elevation-z8" [src]="profile_pic_url" alt="" (click)="profile_pic_input.click()"> 
+    
+    <div class="center margin-top">
+        <button mat-raised-button color="primary" type="button" class="margin-right" (click)="clear_profile_pic()">
+            Clear
+        </button>
+
+        <button mat-raised-button color="primary" type="button"  (click)="change_profile_pic()" [disabled]="selected_profile_pic == undefined" *ngIf="!profile_pic_change_loading">
+            Save Changes
+        </button>
+
+        <button class="btn btn-primary" type="button" disabled *ngIf="profile_pic_change_loading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Saving...
+        </button>
+    </div>
+
+
+
+    <form [formGroup]="profileInfoForm" (ngSubmit)="change_user_info(profileInfoForm.value)"> 
+        <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" [(ngModel)]="userInfo.first_name" [formControl]="first_name" required>
+            <mat-error *ngIf="first_name.invalid">Invalid input.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" [formControl]="last_name" [(ngModel)]="userInfo.last_name" required>
+            <mat-error *ngIf="last_name.invalid">Invalid input.</mat-error>
+        </mat-form-field>
+
+        
+        <mat-radio-group aria-label="Select an option" [formControl]="gender" [(ngModel)]="userInfo.gender" class="gender-btn" required>
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Other">Other</mat-radio-button>
+          </mat-radio-group>
+
+        <mat-form-field class="full-width">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email_id" [(ngModel)]="userInfo.email_id" required>
+            <mat-error *ngIf="email_id.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Contact Number</mat-label>
+            <span matPrefix>+91 &nbsp;</span>
+            <input type="number" matInput placeholder="555-555-1234" [formControl]="contact_number" [(ngModel)]="userInfo.contact_number" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="contact_number.invalid">Phone number should contain 10 digit.</mat-error>
+          </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="makeFormEditable()">
+            Edit
+        </button>
+
+
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit"[disabled]="!profileInfoForm.valid" *ngIf="!change_profile_info_loading">
+                Save Changes
+            </button> 
+
+            <button class="btn btn-primary" type="button" disabled *ngIf="change_profile_info_loading">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Saving...
+            </button>
+        </div>
+        
+    </form>
+    <mat-divider class="margin-top"></mat-divider>
+
+    <div class="margin-top warning-box" *ngIf="!userInfo.is_email_id_verified">
+        <p class="warning-text">
+            It is detected that your email id is not verified yet. Please verify it.
+        </p>
+
+        <div class="margin-top">
+            <button mat-raised-button color="warn" type="submit" *ngIf="!verification_link_loading" (click)="send_varification_link()">
+                Send Varification Link
+            </button> 
+
+            <button class="btn btn-primary" type="button" disabled *ngIf="verification_link_loading">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Please Wait...
+            </button>
+        </div>
+        <mat-divider class="margin-top"></mat-divider>
+    </div>
+
+    
+
+    <h1 class="text-center header margin-top">Change Password</h1>
+    <form [formGroup]="passwordForm" (ngSubmit)="change_password(passwordForm.value)">
+        <mat-form-field class="full-width">
+            <mat-label>Enter your old password</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="password1">
+            <button type="button" mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password1.invalid">Password must be contain atleast 8 character.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Enter new password</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="password2" [(ngModel)]="newPass1">
+            <button type="button" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password2.invalid">Password must be contain atleast 8 character.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Confirm new password</mat-label>
+            <input matInput [type]="hide3 ? 'password' : 'text'" formControlName="password3" [(ngModel)]="newPass2">
+            <button type="button" mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+              <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password3.invalid">Password must be contain atleast 8 character.</mat-error>
+        </mat-form-field>
+        <span *ngIf="password3.valid && newPass1 != newPass2" class="warning-message">New password and confirm password did not match.</span>
+        <span *ngIf="password3.valid && newPass1 == newPass2" class="success-message">Now you can change your password..!</span>
+
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit"[disabled]="!passwordForm.valid || newPass1 != newPass2">
+                Change Password
+            </button> 
+        </div>
+    </form>
+</div>
