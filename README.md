@@ -1,3 +1,13 @@
+# How to run python script
+1] Activate virtual env
+source wp_env/bin/activate
+
+2]Run
+pyhton manage.py runserver
+
+# How to run Angular
+ng serve
+
 # Signup Page.
 ![screencapture-localhost-4200-signup-2022-08-14-14_24_30](https://user-images.githubusercontent.com/92290647/184530310-40f9ab69-6477-4cb0-94a6-6ee89a55520a.png)
 
