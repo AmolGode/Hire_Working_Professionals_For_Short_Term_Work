@@ -66,3 +66,7 @@ class FeedbackModel(models.Model):
     
     class Meta:
         db_table = 'feedback'
+
+
+
+# FeedbackModel.objects.filter(business_account_id=1)aggregate(Avg(rating))

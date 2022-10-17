@@ -15,7 +15,7 @@ import requests
 
 # Create your views here.
 
-key = 'working_professionals_2022'  # key from decrypt password
+key = 'working_professionals_2022'  # key for encrypt password
 
 
 class UserAPI(APIView):
@@ -25,7 +25,8 @@ class UserAPI(APIView):
             email_id=email_id, is_email_id_verified=True).count()
         if count > 0:
             resp = {
-                'error': 'Email id is already in use, Please use another email id and try again..!', 'acc_created': False}
+                'error': 'Email id is already in use, Please use another email id and try again..!', 'acc_created': False
+                }
             return Response(resp)
         request.data._mutable = True
         request.data['password'] = make_password(

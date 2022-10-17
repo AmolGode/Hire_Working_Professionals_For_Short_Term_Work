@@ -19,6 +19,7 @@ class SearchWorkingProgessionals(APIView):
                                              is_business_card_image=True, business_account__verification_status=
                                              'Approved', business_account__subscription_expiry_date__gte=datetime.today()
                                              .strftime('%Y-%m-%d')).distinct()
+                            #.select_related('business_account')
         serializer = SearchWorkingProfessionalsSerializer(ws, many=True)
         resp = {'resp': serializer.data}
         return Response(resp)
