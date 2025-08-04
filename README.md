@@ -1,4 +1,4 @@
-# How to run python script
+# How to run?
 1] Activate virtual env
 source wp_env/bin/activate
 
